@@ -10,6 +10,9 @@ from bokeh.plotting import figure
 from bokeh.models import GeoJSONDataSource, LinearColorMapper, ColorBar
 from bokeh.palettes import brewer
 from selenium import webdriver
+import imageio
+import os
+
 
 #https://stackoverflow.com/questions/16283799/how-to-read-a-csv-file-from-a-url-with-python
 #tutorial: https://towardsdatascience.com/a-complete-guide-to-an-interactive-geographical-map-using-python-f4c5197e23e0
@@ -17,6 +20,7 @@ from selenium import webdriver
 #https://stackoverflow.com/questions/28836781/reading-column-names-alone-in-a-csv-file/35963291
 #https://github.com/bokeh/bokeh
 #https://thispointer.com/python-pandas-how-to-create-dataframe-from-dictionary/
+#https://stackoverflow.com/questions/49929374/notadirectoryerror-winerror-267-the-directory-name-is-invalid-error-while-inv
 
 data={}
 
@@ -45,9 +49,23 @@ driver.set_page_load_timeout(30)
 driver.get("https://www.google.com/")
 driver.quit()
 
+def DeleteFile(filenames):
+    for filename in filenames:
+        os.remove(filename)
+    print("Deleted")
 
+def MakeGIF(filenames):
 
-def Visualization(dfobj):
+    gif_path = "corona-history.gif"
+    with imageio.get_writer(gif_path, mode='I') as writer:
+        for i in range(0,len(filenames)):
+            try:
+                writer.append_data(imageio.imread(filenames[i]))
+                print("YES ",filenames[i])
+            except Exception as e:
+                print(e)
+
+def Visualization(dfobj,image_file_name):
     global gdf
     #Merge dataframes gdf and df_2016.
     merged = gdf.merge(dfobj, left_on = 'country', right_on = 'country')
@@ -89,7 +107,7 @@ def Visualization(dfobj):
 
     #Display figure.
     #show(p)
-    export_png(p, filename="plot.png")
+    export_png(p, filename=image_file_name)
     print("Exported")
 
 
@@ -193,8 +211,8 @@ current=1
 ending_date = datetime.datetime.date(datetime.datetime.now())
 current_date = datetime.date(2020, 1, 22) #year, month, day
 base_string =  'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'
-
-while(current<=90):
+filenames=[]
+while(current<=30):
     print("current_date = ",current_date)
     year, month, day =  FindMonthDayYear(str(current_date))
     url = base_string + month+'-'+day+'-'+year+'.csv'
@@ -204,8 +222,8 @@ while(current<=90):
         #print("length = ",len(data),len(temp_data))
         dfObj = MakePandaDataFrame(data)
         #print(dfObj.head())
-        if(current == 50):
-            Visualization(dfObj)
+        Visualization(dfObj,'Plot-'+str(current_date)+'.png')
+        filenames.append('Plot-'+str(current_date)+'.png')
 
     except Exception as e:
         print(e)
@@ -213,3 +231,6 @@ while(current<=90):
     current = current+1
     if(ending_date == current_date):
         break
+
+MakeGIF(filenames)
+DeleteFile(filenames)
