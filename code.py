@@ -12,6 +12,7 @@ from bokeh.palettes import brewer
 from selenium import webdriver
 import imageio
 import os
+from pygifsicle import optimize
 
 
 #https://stackoverflow.com/questions/16283799/how-to-read-a-csv-file-from-a-url-with-python
@@ -37,6 +38,26 @@ for ind in gdf.index:
     country_names.append(gdf['country'][ind])
 
 country_names = sorted(country_names)
+conflict_resolve={}
+for i in country_names:
+    #print(i)
+    data[i]={}
+    data[i]['confirmed']=0
+    data[i]['deaths']=0
+    data[i]['recovered']=0
+
+with open('conflicted_country_resolve.csv','r') as file:
+    lines = file.readlines()
+    ct=0
+    for l in lines:
+        ct=ct+1
+        if(ct==1):
+            continue
+        s=l.strip()
+        s=s.split(',')
+        giv=s[0]
+        map=s[1]
+        conflict_resolve[giv]=map
 #print(country_names)
 #print(gdf.head())
 #print(gdf[gdf['country'] == 'Antarctica'])
@@ -57,15 +78,15 @@ def DeleteFile(filenames):
 def MakeGIF(filenames):
 
     gif_path = "corona-history.gif"
-    with imageio.get_writer(gif_path, mode='I') as writer:
+    with imageio.get_writer(gif_path, mode='I',duration=0.5) as writer:
         for i in range(0,len(filenames)):
             try:
                 writer.append_data(imageio.imread(filenames[i]))
-                print("YES ",filenames[i])
             except Exception as e:
                 print(e)
+    writer.close()
 
-def Visualization(dfobj,image_file_name):
+def Visualization(dfobj,image_file_name,date_value):
     global gdf
     #Merge dataframes gdf and df_2016.
     merged = gdf.merge(dfobj, left_on = 'country', right_on = 'country')
@@ -76,7 +97,7 @@ def Visualization(dfobj,image_file_name):
     geosource = GeoJSONDataSource(geojson = json_data)
 
     #Define a sequential multi-hue color palette.
-    palette = brewer['YlGnBu'][8]
+    palette = brewer['YlOrRd'][8] #YlGnBu
 
     #Reverse color order so that dark blue is highest obesity.
     palette = palette[::-1]
@@ -92,7 +113,7 @@ def Visualization(dfobj,image_file_name):
     border_line_color=None,location = (0,0), orientation = 'horizontal', major_label_overrides = tick_labels)
 
     #Create figure object.
-    p = figure(title = 'Corona Virus Spreading History', plot_height = 600 , plot_width = 950, toolbar_location = None)
+    p = figure(title = 'Corona Virus Spreading History: '+date_value, plot_height = 600 , plot_width = 950, toolbar_location = None)
     p.xgrid.grid_line_color = None
     p.ygrid.grid_line_color = None
 
@@ -112,19 +133,23 @@ def Visualization(dfobj,image_file_name):
 
 
 def IntegerChecker(value):
+    value=value.strip()
     try:
         return(int(value))
     except Exception as e:
         return 0
 
 def CountryMapper(country_name):
+    global conflict_resolve
     country_name_lower = country_name.lower()
     if(country_name_lower == 'mainland china'):
         return 'China'
+    if(country_name in conflict_resolve):
+        return conflict_resolve[country_name]
     return country_name
 
 def ReadingThroughWay1(row):
-    country = row['Country/Region']
+    country = row['Country/Region'].strip()
     country = CountryMapper(country)
     confirmed = IntegerChecker(row['Confirmed'])
     deaths = IntegerChecker(row['Deaths'])
@@ -132,12 +157,13 @@ def ReadingThroughWay1(row):
     return country, confirmed, deaths, recovered
 
 def ReadingThroughWay2(row):
-    country = row['Country_Region']
+    country = row['Country_Region'].strip()
     country = CountryMapper(country)
     confirmed = IntegerChecker(row['Confirmed'])
     deaths = IntegerChecker(row['Deaths'])
     recovered = IntegerChecker(row['Recovered'])
     return country, confirmed, deaths, recovered
+
 
 def ImportingFile(url):
     ftpstream = urllib.request.urlopen(url)
@@ -179,12 +205,15 @@ def FindMonthDayYear(date_string):
     day = date_string[2]
     return year, month, day
 
+conflicting_countries=[]
 def UpdateData(temp_data):
+    global conflicting_countries
     global data
     for i in temp_data:
         if(i in data):
             data[i]=temp_data[i]
         else:
+            conflicting_countries.append(i)
             data[i]={}
             data[i]=temp_data[i]
     return
@@ -212,7 +241,7 @@ ending_date = datetime.datetime.date(datetime.datetime.now())
 current_date = datetime.date(2020, 1, 22) #year, month, day
 base_string =  'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'
 filenames=[]
-while(current<=30):
+while(True):
     print("current_date = ",current_date)
     year, month, day =  FindMonthDayYear(str(current_date))
     url = base_string + month+'-'+day+'-'+year+'.csv'
@@ -222,7 +251,7 @@ while(current<=30):
         #print("length = ",len(data),len(temp_data))
         dfObj = MakePandaDataFrame(data)
         #print(dfObj.head())
-        Visualization(dfObj,'Plot-'+str(current_date)+'.png')
+        Visualization(dfObj,'Plot-'+str(current_date)+'.png',str(current_date))
         filenames.append('Plot-'+str(current_date)+'.png')
 
     except Exception as e:
@@ -234,3 +263,17 @@ while(current<=30):
 
 MakeGIF(filenames)
 DeleteFile(filenames)
+temp=[]
+for i in data:
+    temp.append(i)
+temp = sorted(temp)
+conflicting_countries = sorted(conflicting_countries)
+"""
+print("conflict")
+for i in conflicting_countries:
+    print(i)
+print("\n\ntotal")
+for i in temp:
+    print(i)
+print("Main countires")
+"""
