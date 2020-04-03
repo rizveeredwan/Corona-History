@@ -27,12 +27,17 @@ data={}
 
 #shape file directory
 shapefile = 'Map-Data/ne_110m_admin_0_countries.shp'
+property_list=['ADMIN', 'ADM0_A3', 'geometry']
+shapefile1 = './Countries_WGS84/Countries_WGS84.shp'
+property_list1=['CNTRY_NAME','geometry']
 
 #Read shapefile using Geopandas
-gdf = gpd.read_file(shapefile)[['ADMIN', 'ADM0_A3', 'geometry']]
+gdf = gpd.read_file(shapefile1)[property_list1]
 
 #Rename columns.
-gdf.columns = ['country', 'country_code', 'geometry']
+########## Version 1 ###############
+#gdf.columns = ['country', 'country_code', 'geometry']
+gdf.columns = ['country', 'geometry']
 country_names=[]
 for ind in gdf.index:
     country_names.append(gdf['country'][ind])
