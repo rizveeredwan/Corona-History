@@ -45,6 +45,7 @@ for i in country_names:
     data[i]['confirmed']=0
     data[i]['deaths']=0
     data[i]['recovered']=0
+    data[i]['ratio']=0.0
 
 with open('conflicted_country_resolve.csv','r') as file:
     lines = file.readlines()
@@ -99,14 +100,14 @@ def Visualization(dfobj,image_file_name,date_value):
     #Define a sequential multi-hue color palette.
     palette = brewer['YlOrRd'][8] #YlGnBu
 
-    #Reverse color order so that dark blue is highest obesity.
+    #Reverse color order so that dark red is highest.
     palette = palette[::-1]
 
     #Instantiate LinearColorMapper that linearly maps numbers in a range, into a sequence of colors.
-    color_mapper = LinearColorMapper(palette = palette, low = 0, high = 40)
+    color_mapper = LinearColorMapper(palette = palette, low = 0, high = 100)
 
     #Define custom tick labels for color bar.
-    tick_labels = {'0': '0%', '5': '5%', '10':'10%', '15':'15%', '20':'20%', '25':'25%', '30':'30%','35':'35%', '40': '>40%'}
+    tick_labels = {'0': '0', '10': '10', '20':'20', '40': '40', '60':'60', '70':'70', '80':'80','90':'90', '100': '>100'}
 
     #Create color bar.
     color_bar = ColorBar(color_mapper=color_mapper, label_standoff=8,width = 500, height = 20,
@@ -190,6 +191,7 @@ def ImportingFile(url):
             temp_data[country]['confirmed']=0
             temp_data[country]['deaths']=0
             temp_data[country]['recovered']=0
+            temp_data[country]['ratio']=0.0
         temp_data[country]['confirmed']=temp_data[country]['confirmed']+confirmed
         temp_data[country]['deaths']=temp_data[country]['deaths']+deaths
         temp_data[country]['recovered']=temp_data[country]['recovered']+recovered
@@ -209,6 +211,7 @@ conflicting_countries=[]
 def UpdateData(temp_data):
     global conflicting_countries
     global data
+    sum = 0.0
     for i in temp_data:
         if(i in data):
             data[i]=temp_data[i]
@@ -223,15 +226,17 @@ def MakePandaDataFrame(temp_data):
         'country': [],
         'confirmed':[],
         'deaths':[],
-        'recovered':[]
+        'recovered':[],
+        'ratio':[]
     }
     for i in temp_data:
         frame['country'].append(i)
         frame['confirmed'].append(temp_data[i]['confirmed'])
         frame['deaths'].append(temp_data[i]['deaths'])
         frame['recovered'].append(temp_data[i]['recovered'])
+        frame['ratio'].append(temp_data[i]['ratio'])
 
-    dfObj = pd.DataFrame(frame, columns=['country', 'confirmed', 'deaths', 'recovered'])
+    dfObj = pd.DataFrame(frame, columns=['country', 'confirmed', 'deaths', 'recovered','ratio'])
 
     return dfObj
 
