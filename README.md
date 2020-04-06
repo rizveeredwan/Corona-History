@@ -11,5 +11,6 @@ https://stackoverflow.com/questions/54734667/error-installing-geopandas-a-gdal-a
 # Links Followed:
 1. https://gist.github.com/PurpleBooth/109311bb0361f32d87a2 
 2. https://guides.github.com/features/mastering-markdown/ 
+3. https://www.digitalocean.com/community/tutorials/how-to-crawl-a-web-page-with-scrapy-and-python-3 
 
 
