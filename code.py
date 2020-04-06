@@ -45,7 +45,7 @@ for ind in gdf.index:
 country_names = sorted(country_names)
 conflict_resolve={}
 for i in country_names:
-    #print(i)
+    print(i)
     data[i]={}
     data[i]['confirmed']=0
     data[i]['deaths']=0
@@ -66,9 +66,9 @@ with open('conflicted_country_resolve.csv','r') as file:
         conflict_resolve[giv]=map
 #print(country_names)
 #print(gdf.head())
-#print(gdf[gdf['country'] == 'Antarctica'])
+print(gdf[gdf['country'] == 'Antarctica'])
 #Drop row corresponding to 'Antarctica'
-gdf = gdf.drop(gdf.index[159])
+gdf = gdf.drop(gdf.index[14])
 
 
 driver = webdriver.Firefox(executable_path=r'E:\Research\Corona-Visualization\Corona-History\geckodriver.exe')
@@ -278,10 +278,11 @@ for i in data:
     temp.append(i)
 temp = sorted(temp)
 conflicting_countries = sorted(conflicting_countries)
-"""
+
 print("conflict")
 for i in conflicting_countries:
     print(i)
+"""
 print("\n\ntotal")
 for i in temp:
     print(i)

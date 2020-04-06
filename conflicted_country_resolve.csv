@@ -2,27 +2,27 @@ Given_Name,Actual_Name
 Andorra,Andorra
 Antigua and Barbuda,Antigua and Barbuda
 Aruba,Aruba
-Bahamas,The Bahamas
-"Bahamas, The",The Bahamas
+Bahamas,"Bahamas, The"
+"Bahamas, The","Bahamas, The"
 Bahrain,Bahrain
 Barbados,Barbados
-Burma,Burma
+Burma,Myanmar (Burma)
 Cape Verde,Cape Verde
-Cape Verde,Cape Verde
+Cabo Verde,Cape Verde
 Cayman Islands,United Kingdom
 Channel Islands,United Kingdom
-Congo (Brazzaville),Republic of the Congo
-Congo (Kinshasa),Republic of the Congo
+Congo (Brazzaville),Congo
+Congo (Kinshasa),Congo
 Cote d'Ivoire,Ivory Coast
 Cruise Ship,Others
 Curacao,Curacao
-Czech Republic,Czechia
+Czech Republic,Czech Republic
 Diamond Princess,Others
 Dominica,Dominica
 Eswatini,eSwatini
 Faroe Islands,Faroe Islands
 French Guiana,France
-"Gambia, The",Gambia
+"Gambia, The","Gambia, The"
 Gibraltar,United Kingdom
 Grenada,Grenada
 Guadeloupe,France
@@ -53,23 +53,29 @@ Republic of Moldova,Moldova
 Reunion,Reunion
 Russian Federation,Russia
 Saint Barthelemy,France
-Saint Kitts and Nevis,Saint Kitts and Nevis
-Saint Lucia,Saint Lucia
+Saint Kitts and Nevis,St. Kitts and Nevis
+Saint Lucia,St. Lucia
 Saint Martin,Saint Martin
 Saint Vincent and the Grenadines,Saint Vincent and the Grenadines
 San Marino,San Marino
-Serbia,Republic of Serbia
+Serbia,Serbia
 Seychelles,Seychelles
 Singapore,Singapore
-St. Martin,Saint Martin
+St. Martin,St. Martin
 Taipei and environs,Taiwan
 Taiwan*,Taiwan
-Tanzania,United Republic of Tanzania
+Tanzania,"Tanzania, United Republic of"
 The Gambia,Gambia
 Timor-Leste,East Timor
 UK,United Kingdom
-US,United States of America
+US,United States
 Vatican City,Italy
 Viet Nam,Vietnam
-West Bank and Gaza,Palestine
-occupied Palestinian territory,Palestine
+West Bank and Gaza,West Bank
+occupied Palestinian territory,West Bank
+Belarus,Byelarus
+Curacao,Curacao
+Kosovo,Kosovo
+MS Zaandam,MS Zaandam
+Saint Vincent and the Grenadines,St. Vincent and the Grenadines
+South Sudan,Sudan
