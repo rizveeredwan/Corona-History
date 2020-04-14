@@ -75,36 +75,54 @@ class Fetcher {
 
     public ArrayList<String> getFormattedData(String link) throws IOException{
       ArrayList<String>extracted_data = new ArrayList<String>();
+      StringBuilder sb = new StringBuilder();
       Document doc = Jsoup.connect(link).get();
 
+      //headline
       Elements headline = doc.select("h1");
+      String val="";
+      sb = new StringBuilder();
+      sb.append(" ");
       for (Element text : headline) {
-          extracted_data.add(text.text());
+          val = text.text();
+          val = val.replace(","," ");
+          sb.append(val);
           break;
       }
-      extracted_data.add(" ");
+      extracted_data.add(sb.toString());
+
+      //summary
       Elements summary = doc.select("p#article-summary");
+      val = "";
+      sb = new StringBuilder();
+      sb.append(" ");
       for (Element text : summary) {
-          extracted_data.add(text.text());
-          break;
+        val = text.text();
+        val = val.replace(","," ");
+        sb.append(val);
       }
-      extracted_data.add(" ");
+      extracted_data.add(sb.toString());
+
+      //normal text
       Elements texts = doc.select("p");
       int cnt=0;
-      StringBuilder sb = new StringBuilder();
-      String txt="";
+      sb = new StringBuilder();
+      sb.append(" ");
       for (Element text : texts) {
           cnt=cnt+1;
           if(cnt==1) continue;
-          txt=
-          sb.append(text.text());
+          val = text.text();
+          val = val.replace(","," ");
+          sb.append(val+" ");
       }
       extracted_data.add(sb.toString());
+      //System.out.println(extracted_data.get(extracted_data.size()-1).length());
+
       Elements image = doc.select("img[src]");
       sb = new StringBuilder();
-      sb.append(',');
+      sb.append(" ");
       for (Element text : image) {
-          sb.append(text.attr("abs:src")+",");
+          sb.append(text.attr("abs:src")+" ");
           //System.out.println(text.attr("abs:src"));
           //extracted_data.add(text.text());
           //break;
@@ -138,6 +156,7 @@ class Fetcher {
             s=articleLinks.get(i);
             System.out.println(s);
             savenew  = getFormattedData(s);
+            //System.out.println(savenew.get(2).length());
             /*System.out.println(savenew.size());
             System.out.println(savenew.get(0));
             System.out.println(savenew.get(1));
@@ -146,7 +165,7 @@ class Fetcher {
             date=metaData.get(i).get(3)+'/'+metaData.get(i).get(2)+'/'+metaData.get(i).get(1); //date-month-year
             tags="";
             for(int j=4;j<metaData.get(i).size()-1;j++){
-              tags=tags+metaData.get(i).get(j);
+              tags=tags+" "+metaData.get(i).get(j);
             }
 
             WriteIntoFile(date,s,tags,savenew.get(0),savenew.get(1),savenew.get(2),savenew.get(3));
@@ -158,7 +177,7 @@ class Fetcher {
     public void WriteIntoFile(String date, String url, String tags, String headline, String summary, String text_data, String image_source) throws IOException{
         String t = date+','+url+','+tags+','+headline+','+summary+','+text_data+','+image_source;
         bw.write(t+'\n');
-        System.out.println("written "+t);
+        //System.out.println("written "+t);
     }
 
     public void FileClose() throws IOException{
@@ -168,59 +187,180 @@ class Fetcher {
 
 }
 
-public class NewYorkTimes {
-    public static void main(String[] args) {
-        String topicName = "bangladesh"; // this says the topic name of the content of which I am collecting data
-        Fetcher fetcher = new Fetcher(topicName);
+class CustomComparator implements Comparator<String> {
+    //@Override
+    public int compare(String o1, String o2) {
+        String arr[] = o1.split("/"); //date/month/year
+        Calendar c1 = new GregorianCalendar(Integer.parseInt(arr[2]),Integer.parseInt(arr[1]),Integer.parseInt(arr[0]));
+        Date d1 = c1.getTime();
 
-        int page = 0;
-        String pageLink = "https://www.nytimes.com/issue/todayspaper/2020/04/02/todays-new-york-times";
+        String arr2[] = o2.split("/");
+        Calendar c2 = new GregorianCalendar(Integer.parseInt(arr2[2]),Integer.parseInt(arr2[1]),Integer.parseInt(arr2[0]));
+        Date d2 = c2.getTime();
+        return d1.compareTo(d2);
+    }
+}
+
+
+public class NewYorkTimes {
+
+    String topicName = "news_data"; // this says the topic name of the content of which I am collecting data
+    Fetcher fetcher = new Fetcher(topicName);
+
+    public static Date MakeDateFromString(String date){
+        String arr[] = date.split("/"); //   day/month/year
+        int year = Integer.parseInt(arr[2]);
+        int month = Integer.parseInt(arr[1]);
+        int day = Integer.parseInt(arr[0]);
+        Date d =  new GregorianCalendar(year, month, day).getTime();
+        return d;
+    }
+
+    public static ArrayList<String> SplitDate(String date){
+      String arr[] = date.split("/"); //   day/month/year
+      ArrayList<String>temp = new ArrayList<String>();
+      temp.add(arr[0]);
+      temp.add(arr[1]);
+      temp.add(arr[2]);
+      return temp;
+    }
+
+    public static ArrayList<String> ReturnNextDay(String day, String month, String year){
+      System.out.println(day+" , "+month+" , "+year);
+      System.out.println(Integer.parseInt(year));
+      Date dt = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day)).getTime();
+      System.out.println(dt);
+      Calendar cal = Calendar.getInstance();
+      cal.setTime(dt);
+      cal.add(Calendar.DATE, 1);
+      dt = cal.getTime();
+      cal.setTime(dt);
+      System.out.println(dt);
+      ArrayList<String>temp = new ArrayList<String>();
+      temp.add(Integer.toString(cal.get(Calendar.DAY_OF_MONTH)));
+      temp.add(Integer.toString(cal.get(Calendar.MONTH)));
+      temp.add(Integer.toString(cal.get(Calendar.YEAR)));
+      return temp;
+    }
+
+    public static ArrayList<String> ReturnPreviousDays(String day, String month, String year,int offset){
+      //System.out.println(day+" , "+month+" , "+year);
+      //System.out.println(Integer.parseInt(year));
+      Date dt = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day)).getTime();
+      //System.out.println(dt);
+      Calendar cal = Calendar.getInstance();
+      cal.setTime(dt);
+      cal.add(Calendar.DATE, -offset);
+      dt = cal.getTime();
+      cal.setTime(dt);
+      //System.out.println(dt);
+      ArrayList<String>temp = new ArrayList<String>();
+      temp.add(Integer.toString(cal.get(Calendar.DAY_OF_MONTH)));
+      temp.add(Integer.toString(cal.get(Calendar.MONTH)));
+      temp.add(Integer.toString(cal.get(Calendar.YEAR)));
+      return temp;
+    }
+
+    public static boolean DataFetchInitiate(String day, String month, String year, NewYorkTimes newspaer){
+        day = Padding(day,2);
+        month = Padding(Integer.toString((Integer.parseInt(month)+1)),2);
+        String page_link = "https://www.nytimes.com/issue/todayspaper/"+year+"/"+ month +"/"+day+"/todays-new-york-times";
         try{
-          fetcher.getFetchedLinks(pageLink);
+          newspaer.fetcher.getFetchedLinks(page_link);
+          return true;
         }
         catch(Exception error){
           System.out.println(error);
+          return false;
+        }
+    }
+
+    public static void WriteIntoFile(ArrayList<String>dates) throws IOException{
+      FileWriter fw = new FileWriter("processed_dates.txt");
+      BufferedWriter bw = new BufferedWriter(fw);
+      for(int i=0;i<dates.size();i++){
+        bw.write(dates.get(i)+"\n");
+      }
+      bw.close();
+      fw.close();
+    }
+
+    public static String Padding(String str,int size){
+        while(str.length()<size){
+          str="0"+str;
+        }
+        return str;
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        NewYorkTimes newspaper = new NewYorkTimes();
+
+        ArrayList<String> dates = new ArrayList<String>();
+
+        Date current_date = new Date();
+        System.out.println(current_date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(current_date); // don't forget this if date is arbitrary e.g. 01-01-2014, Read more: https://www.java67.com/2016/12/how-to-get-current-day-month-year-from-date-in-java8.html#ixzz6JYhH6VmN
+        String day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH)); // 17
+        String month = Integer.toString(cal.get(Calendar.MONTH)); // 5
+        String year =  Integer.toString(cal.get(Calendar.YEAR)); // 2016
+        String current_date_string = day + '/' + month + '/' + year;
+        //Read more: https://www.java67.com/2016/12/how-to-get-current-day-month-year-from-date-in-java8.html#ixzz6JYhOo52p
+
+        String line = "";
+
+
+        try{
+          FileReader fr = new FileReader("processed_dates.txt");
+          BufferedReader br = new BufferedReader(fr);
+          while((line = br.readLine()) != null){
+              dates.add(line);
+          }
+          br.close();
+          fr.close();
+          Collections.sort(dates, new CustomComparator());
+          for(int i=0;i<dates.size();i++){
+            System.out.println(dates.get(i));
+          }
+        }
+        catch(Exception e){
+            System.out.println(e);
         }
 
-
-        /*try {
-            FileReader fr = new FileReader("PageNumberSaver.txt");
-            BufferedReader br = new BufferedReader(fr);
-            page = Integer.parseInt(br.readLine());
-
-            int max_page_at_one_pass = 100;
-            int timeGap = 5000 * 60;
-            for (int i = 1; i <= max_page_at_one_pass; i++) {
-                page++;// starting from new page
-                try {
-                    String pageLink = "https://www.prothomalo.com/" + topicName + "/article?page="
-                            + Integer.toString(page);
-                    System.out.println("Current page: " + pageLink);
-                    fetcher.getFetchedLinks(pageLink);
-                    System.out.println("Status: " + Integer.toString(page) + " complete");
-                    // debug: System.out.println("waiting started");
-                    Long currentTime = System.currentTimeMillis();
-                    while (true) {
-                        Long newTime = System.currentTimeMillis();
-                        if ((newTime - currentTime) <= timeGap) {
-                            continue;
-                        } else {
-                            // debug: System.out.println("waiting End.");
-                            break;
-                        }
-                    }
-                } catch (Exception e) {
-                    System.out.println("Error while sending");
+        ArrayList<String>temp;
+        if(dates.size()>0){
+            while(true){
+                Date d1 = MakeDateFromString(dates.get(dates.size()-1));
+                Date d2 = MakeDateFromString(current_date_string);
+                System.out.println(d1.compareTo(d2));
+                if(d1.compareTo(d2)<0) {
+                    //we need to update some more dates: date gap exists
+                    temp = SplitDate(dates.get(dates.size()-1));
+                    temp = ReturnNextDay(temp.get(0), temp.get(1), temp.get(2));
+                    System.out.println(temp);
+                    boolean var =  DataFetchInitiate(temp.get(0),temp.get(1),temp.get(2),newspaper); // day/month/year
+                    dates.add(temp.get(0)+"/"+temp.get(1)+"/"+temp.get(2));
                 }
+                else if(d1.compareTo(d2)>=0) break;
             }
-
-            FileWriter fw = new FileWriter("PageNumberSaver.txt");
-            fw.write(Integer.toString(page));
-            fw.close();
-
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.println("Error occurred");
-        }*/
+            //dates.add(day+'/'+month+'/'+year);
+        }
+        else{
+            System.out.println(day+" "+month+" "+year);
+            boolean var =  DataFetchInitiate(day,month,year,newspaper); // day/month/year
+            dates.add(day+"/"+month+"/"+year);
+        }
+        //backwards
+        int number_of_backward_days=10;
+        for(int i=1;i<=number_of_backward_days;i++){
+            temp = SplitDate(dates.get(0));
+            temp = ReturnPreviousDays(temp.get(0), temp.get(1), temp.get(2),i);
+            System.out.println(temp);
+            boolean var =  DataFetchInitiate(temp.get(0),temp.get(1),temp.get(2),newspaper); // day/month/year
+            dates.add(temp.get(0)+"/"+temp.get(1)+"/"+temp.get(2));
+        }
+        Collections.sort(dates, new CustomComparator());
+        WriteIntoFile(dates);
     }
 }
