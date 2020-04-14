@@ -1,38 +1,38 @@
-Division,District,Alt_Name,4/13/19
-Dhaka,Dhaka,Dhaka,407
-Dhaka,Gazipur,Gazipur,35
-Dhaka,Kishoreganj,Kishoreganj,10
-Dhaka,Madaripur,Madaripur,19
-Dhaka,Manikganj,Manikganj,5
-Dhaka,Narayanganj,Narayanganj,144
-Dhaka,Munshigonj,Munshiganj,17
-Dhaka,Narshingdi,Narsingdi,20
-Dhaka,Rajbari,Rajbari,6
-Dhaka,Tangail,Tangail,7
-Dhaka,Shariatpur,Shariatpur,1
-Dhaka,Gopalganj,Gopalganj,3
-Chittagong,Chattogram,Chittagong,18
-Chittagong,Cox’s bazar,Cox's Bazar,1
-Chittagong,Cumilla,Comilla,9
-Chittagong,B. Baria,Brahmanbaria,6
-Chittagong,Laksmipur,Lakshmipur,1
-Chittagong,Chandpur,Chandpur,6
-Sylhet,Moulovi Bazar,Maulvibazar,1
-Sylhet,Shunamganj,Sunamganj,1
-Sylhet,Hobiganj,Habiganj,1
-Sylhet,Sylhet,Sylhet,1
-Rangpur,Rangpur,Rangpur,2
-Rangpur,Gaibandha,Gaibandha,6
-Rangpur,Nilphamari,Nilphamari,3
-Rangpur,Lalmonirhat,Lalmonirhat,1
-Rangpur,Thakurgaon,Thakurgaon,3
-Khulna,Chuadanga,Chuadanga,1
-Mymensingh,Mymensingh,Mymensingh,5
-Mymensingh,Jamalpur,Jamalpur,6
-Mymensingh,Netrokona,Netrakona,1
-Mymensingh,Sherpur,Sherpur,2
-Barisal,Barguna,Barguna,3
-Barisal,Barishal,Barisal,2
-Barisal,Potuakhali,Patuakhali,2
-Barisal,Jhalokathi,Jhalokati,3
-Rajshahi,Rajshahi,Rajshahi,2
+Division,District,Alt_Name,4/12/19,4/13/19
+Dhaka,Dhaka,Dhaka,335,407
+Dhaka,Gazipur,Gazipur,23,35
+Dhaka,Kishoreganj,Kishoreganj,10,10
+Dhaka,Madaripur,Madaripur,19,19
+Dhaka,Manikganj,Manikganj,5,5
+Dhaka,Narayanganj,Narayanganj,107,144
+Dhaka,Munshigonj,Munshiganj,14,17
+Dhaka,Narshingdi,Narsingdi,4,20
+Dhaka,Rajbari,Rajbari,6,6
+Dhaka,Tangail,Tangail,2,7
+Dhaka,Shariatpur,Shariatpur,1,1
+Dhaka,Gopalganj,Gopalganj,3,3
+Chittagong,Chattogram,Chittagong,12,18
+Chittagong,Cox’s bazar,Cox's Bazar,1,1
+Chittagong,Cumilla,Comilla,9,9
+Chittagong,B. Baria,Brahmanbaria,6,6
+Chittagong,Laksmipur,Lakshmipur,1,1
+Chittagong,Chandpur,Chandpur,6,6
+Sylhet,Moulovi Bazar,Maulvibazar,1,1
+Sylhet,Hobiganj,Habiganj,1,1
+Sylhet,Shunamganj,Sunamganj,0,1
+Sylhet,Sylhet,Sylhet,1,1
+Rangpur,Rangpur,Rangpur,2,2
+Rangpur,Gaibandha,Gaibandha,6,6
+Rangpur,Nilphamari,Nilphamari,3,3
+Rangpur,Lalmonirhat,Lalmonirhat,1,1
+Rangpur,Thakurgaon,Thakurgaon,3,3
+Khulna,Chuadanga,Chuadanga,1,1
+Mymensingh,Mymensingh,Mymensingh,5,5
+Mymensingh,Jamalpur,Jamalpur,6,6
+Mymensingh,Netrokona,Netrakona,1,1
+Mymensingh,Sherpur,Sherpur,2,2
+Barisal,Barguna,Barguna,3,3
+Barisal,Barishal,Barisal,0,2
+Barisal,Potuakhali,Patuakhali,1,2
+Barisal,Jhalokathi,Jhalokati,3,3
+Rajshahi,Rajshahi,Rajshahi,0,2
