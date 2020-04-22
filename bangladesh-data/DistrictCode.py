@@ -10,6 +10,8 @@ with open('DistrictData.csv','r') as csv_file:
             line[0]='Barisal'
         if(line[0] == "Chattogram"):
             line[0] = 'Chittagong'
+        if('Cox' in line[1]):
+            line[1]="Cox's bazar"
         print(line[0]+','+line[1])
         dict_today[line[0]+','+line[1]]={}
         dict_today[line[0]+','+line[1]]['division'] = line[0]
