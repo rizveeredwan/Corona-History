@@ -10,6 +10,7 @@ with open('DistrictData.csv','r') as csv_file:
             line[0]='Barisal'
         if(line[0] == "Chattogram"):
             line[0] = 'Chittagong'
+        print(line[0]+','+line[1])
         dict_today[line[0]+','+line[1]]={}
         dict_today[line[0]+','+line[1]]['division'] = line[0]
         dict_today[line[0]+','+line[1]]['district'] = line[1]
@@ -21,9 +22,9 @@ with open('bd_cases.csv','r') as csv_file:
     saved_lines = csv_file.readlines()
 
 with open('bd_cases.csv','w') as csv_file:
-    todays_date = '4/20/20'
+    todays_date = '4/21/20'
     for i in range(0,len(saved_lines)):
-        print(saved_lines[i])
+        #print(saved_lines[i])
         if(i==0):
             saved_lines[i]=saved_lines[i].strip()
             csv_file.write(saved_lines[i]+','+todays_date+'\n')
