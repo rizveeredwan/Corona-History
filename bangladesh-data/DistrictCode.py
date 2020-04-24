@@ -24,7 +24,7 @@ with open('bd_cases.csv','r') as csv_file:
     saved_lines = csv_file.readlines()
 
 with open('bd_cases.csv','w') as csv_file:
-    todays_date = '4/23/20'
+    todays_date = '4/24/20'
     for i in range(0,len(saved_lines)):
         #print(saved_lines[i])
         if(i==0):
