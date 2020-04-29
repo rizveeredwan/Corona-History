@@ -1,17 +1,21 @@
 import csv
 dict_today={}
-with open('DistrictData.csv','r') as csv_file:
+with open('DistrictDeath.csv','r') as csv_file:
     lines = csv_file.readlines()
     for i in range(0,len(lines)):
         if(i==0):
             continue
         line=lines[i].strip().split(",")
+        if(len(line)==2):
+            line.append(0) #null value in last column so zero
         if(line[0] == 'Barishal'):
             line[0]='Barisal'
         if(line[0] == "Chattogram"):
             line[0] = 'Chittagong'
         if('Cox' in line[1]):
             line[1]="Cox's bazar"
+        if(line[2]==''):
+            line[2]="0"
         print(line[0]+','+line[1])
         dict_today[line[0]+','+line[1]]={}
         dict_today[line[0]+','+line[1]]['division'] = line[0]
@@ -19,11 +23,12 @@ with open('DistrictData.csv','r') as csv_file:
         dict_today[line[0]+','+line[1]]['total'] = line[2]
         dict_today[line[0]+','+line[1]]['flag'] = 0
 
+
 saved_lines=[]
-with open('bd_cases.csv','r') as csv_file:
+with open('bd_deaths.csv','r') as csv_file:
     saved_lines = csv_file.readlines()
 
-with open('bd_cases.csv','w') as csv_file:
+with open('bd_deaths.csv','w') as csv_file:
     todays_date = '4/29/20'
     for i in range(0,len(saved_lines)):
         #print(saved_lines[i])
