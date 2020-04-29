@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+  <title>COVID-19 Data Visualization</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20989950-4"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-20989950-4');
+  </script>
+
+
+  <meta property="og:image" content="https://i.imgur.com/foOMgE9.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.shoshikkha.com/covid19"/>
+  <meta property="og:title" content="COVID-19 Data Visualization" />
+  <meta property="og:description" content="This website lets you visualize COVID-19 data and compare among different countries with a range of options. Disclaimer: We collect the data from the CSSE COVID-19 Dataset provided by Johns Hopkins University. We do not verify or modify the data in any form." />
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js" integrity="sha384-3ziFidFTgxJXHMDttyPJKDuTlmxJlwbSkojudK/CkRqKDOmeSbN6KLrGdrBQnT2n" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <script type='text/JavaScript'>
+      console.log("YES");
+      var data_url = 'http://covid.brac.net/Map/GetData';
+      function data() {
+        $.ajax({
+            type: "GET",
+            url: data_url,
+            dataType: "text",
+            Access-Control-Allow-Headers: x-requested-with, 
+            success: function(response){
+                console.log(response);
+            },
+            error: function(response){
+              console.log(response);
+            }
+          });
+      }
+      data();
+  </script>
+</body>
