@@ -39,7 +39,7 @@ def UpdateMainData(file_name, date, area_raw_data, area_raw_data_flag):
             if(area_raw_data_flag[key]==0 and key != ""):
                 line = key
                 for i in range(0,length):
-                    line=line+","+key
+                    line=line+","+" "
                 line=line+','+str(area_raw_data[key])
                 file.write(line+'\n')
                 print("new line added for = ",key)
