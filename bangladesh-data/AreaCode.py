@@ -4,6 +4,7 @@ def ReadRawData(file_name):
     with open(file_name,'r') as csv_file:
         lines = csv_file.readlines()
         for i in range(1,len(lines)):
+            print(lines[i],i)
             line = lines[i].strip().split(',')
             area_raw_data[line[0]]=line[1]
             area_raw_data_flag[line[0]]=0
@@ -33,10 +34,16 @@ def UpdateMainData(file_name, date, area_raw_data, area_raw_data_flag):
                         file.write(data+'\n')
                 except Exception as e:
                     print(e)
-    for key in area_raw_data_flag:
-        if(area_raw_data_flag[key]==0 and key != ""):
-            print("key not set = ",key)
+        length=len(saved_lines[0].strip().split(","))
+        for key in area_raw_data_flag:
+            if(area_raw_data_flag[key]==0 and key != ""):
+                line = key
+                for i in range(0,length):
+                    line=line+","+key
+                line=line+','+str(area_raw_data[key])
+                file.write(line+'\n')
+                print("new line added for = ",key)
 
-date='4/29/20'
+date='4/30/20'
 area_raw_data,area_raw_data_flag = ReadRawData('AreaTodayData.csv')
 UpdateMainData('AreaDataWithCode.csv',date,area_raw_data,area_raw_data_flag)
