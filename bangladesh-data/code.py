@@ -2,4 +2,4 @@ import tabula
 
 # Read pdf into list of DataFrame
 #df = tabula.read_pdf("Pdfs/Confirmed COVID-19 cases_upto_21_April 2020_last.pdf", pages='3')
-tabula.convert_into("Pdfs/Case_dist_01_May.pdf", "output.csv", output_format="csv", pages='all')
+tabula.convert_into("Pdfs/Case_dist_02_May_upload.pdf", "output.csv", output_format="csv", pages='all')

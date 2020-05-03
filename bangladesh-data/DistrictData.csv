@@ -1,20 +1,20 @@
-Division,District/City,cases,death,recovered
-Dhaka,Dhaka,4082,93,0
+Division,District/City,cases,deaths,recovered
+Dhaka,Dhaka,4418,98,0
 Dhaka,Gazipur,322,,0
 Dhaka,Kishoreganj,201,1,0
-Dhaka,Madaripur,39,2,0
+Dhaka,Madaripur,46,2,0
 Dhaka,Manikganj,22,,0
-Dhaka,Narayanganj,966,39,0
-Dhaka,Munshigonj,112,4,0
-Dhaka,Narshingdi,151,1,0
+Dhaka,Narayanganj,987,39,0
+Dhaka,Munshigonj,122,4,0
+Dhaka,Narshingdi,152,1,0
 Dhaka,Rajbari,19,,0
 Dhaka,Faridpur,13,,0
 Dhaka,Tangail,29,3,0
-Dhaka,Shariatpur,30,1,0
+Dhaka,Shariatpur,39,1,0
 Dhaka,Gopalganj,45,,0
-Chattogram,Chattogram,75,2,0
+Chattogram,Chattogram,78,2,0
 Chattogram,Cox’s bazar,37,,0
-Chattogram,Cumilla,99,4,0
+Chattogram,Cumilla,104,4,0
 Chattogram,B. Baria,43,2,0
 Chattogram,Khagrachari,2,,0
 Chattogram,Laksmipur,41,1,0
@@ -22,15 +22,15 @@ Chattogram,Bandarban,7,,0
 Chattogram,Noakhali,9,1,0
 Chattogram,Feni,6,,0
 Chattogram,Chandpur,15,,0
-Sylhet,Moulovi Bazar,12,2,0
-Sylhet,Sunamganj,29,,0
-Sylhet,Hobiganj,55,,0
+Sylhet,Moulovi Bazar,17,2,0
+Sylhet,Sunamganj,33,,0
+Sylhet,Hobiganj,67,,0
 Sylhet,Sylhet,18,2,0
-Rangpur,Rangpur,38,,0
-Rangpur,Gaibandha,21,,0
-Rangpur,Nilphamari,15,,0
+Rangpur,Rangpur,45,,0
+Rangpur,Gaibandha,24,,0
+Rangpur,Nilphamari,16,,0
 Rangpur,Lalmonirhat,3,,0
-Rangpur,Kurigram,8,,0
+Rangpur,Kurigram,15,,0
 Rangpur,Dinajpur,21,,0
 Rangpur,Panchagar,8,,0
 Rangpur,Thakurgaon,17,,0
@@ -59,6 +59,6 @@ Rajshahi,Pabna,10,1,0
 Rajshahi,Chapainawabganj,2,,0
 Rajshahi,Bogra,19,,0
 Rajshahi,Natore,9,,0
-Rajshahi,Naogaon,15,,0
+Rajshahi,Naogaon,16,,0
 Rajshahi,Sirajganj,3,,0
 Rajshahi,Rajshahi,20,2,0
