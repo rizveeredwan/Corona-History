@@ -16,6 +16,8 @@ with open('DistrictData.csv','r') as csv_file:
             line[0] = 'Chittagong'
         if('Cox' in line[1]):
             line[1]="Cox's bazar"
+        if('Rangmati' in line[1]):
+            line[1] = 'Rangamati'
 
         if(line[2]==''):
             line[2]="0"
@@ -67,7 +69,7 @@ def UpdateFiles(file_name,parameter,date,idx): #0=case, 1=death, 2=recovered
             print(key)
             print("flag not set in ",parameter)
 
-date = '5/7/20'
+date = '5/8/20'
 UpdateFiles('bd_cases.csv','case',date,1)
 UpdateFiles('bd_deaths.csv','death',date,2)
 UpdateFiles('bd_recovered.csv','recovered',date,3)
