@@ -69,7 +69,7 @@ def UpdateFiles(file_name,parameter,date,idx): #0=case, 1=death, 2=recovered
             print(key)
             print("flag not set in ",parameter)
 
-date = '5/11/20'
+date = '5/12/20'
 UpdateFiles('bd_cases.csv','case',date,1)
 UpdateFiles('bd_deaths.csv','death',date,2)
 UpdateFiles('bd_recovered.csv','recovered',date,3)
