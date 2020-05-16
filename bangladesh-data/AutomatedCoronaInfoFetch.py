@@ -83,4 +83,4 @@ def ReadFile(file_name,type):
                 file.write(string+'\n')
             file.close()
 
-ReadFile('bd_cases - Copy.csv','case')
+ReadFile('bd_cases.csv','case')
