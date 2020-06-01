@@ -1,167 +1,139 @@
-Abdullahpur,1
-Adabor,9
-Agargaon,12
-Aminbazar,2
-Amlapara,2
-Armanitola,3
-Ashkona,1
-Azimpur,19
-Babu Bazar,29
-Badda,40
-Baily Road,4
-Bakshibazar,2
-Baridhara,7
-Banasree,2
-Banani,10
-Banglamotor,3
-Bangshal,54
-Banianagar,1
-Basabo,33
-Bijoynagar,1
-Bashundhora,13
-Begunbari,2
-Begum Bazar,1
-Beribadh,1
-Bokshi Bazar,5
-Bosila,1
-Buet Area,1
-Cantonment,8
-Central Road,2
-Chankharpool,31
-Chawk Bazar,32
-Dania,1
-Dakshinkhan,1
-Dhakkeshori,1
-Demra,10
-Dhanmondi,37
-Dhalpur,2
-Dholaipar,2
-Dholaikhal,2
-Doyaganj,3
-Elephant Road,10
-Eskaton,10
-Faridabagh,1
-Fakirapool,2
-Forashganj,2
-Farmgate,18
-Gendaria,42
-Golartek,1
-Goran,3
-Golapbagh,3
-Gonoktuli,3
-Gopibag,19
-Green Road,12
-Gulistan,7
-Gulshan,27
-Hatir jhil,5
-Hatirpool,3
-Hazaribagh,36
-Ibrahimpur,2
-Islambagh,2
-Islampur,2
-Jailgate,2
-Jatrabari,91
-Jigatala,7
-Jurain,27
-Kallyanpur,6
-Kalabagan,7
-Kakrail,135
-Kathalbagan,1
-Kamalapur,2
-Kamrangir Char,23
-Kazi para,10
-Kawran Bazar,10
-Koratitola,1
-Kosaituli,1
-Kochukhet,1
-Khilgaon,31
-Khilkhet,3
-Koltabazar,1
-Kodomtoli,6
-Kotowali,11
-Kutubkhali,6
-Kuril,2
-Lalbagh,77
-Laxmibazar,10
-Madartek,3
-Malitola,4
-Malibagh,49
-Matikata,4
-Manda,10
-Maniknagar,4
-Manikdi,1
-Matuail,5
-Meradia,2
-Mirhajaribagh,5
-Mirpur-1,31
-Mirpur-2,2
-Mirpur-6,6
-Mirpur-10,17
-Mirpur-11,31
-Mirpur-12,18
-Mirpur-13,3
-Mirpur-14,37
-Mitford,38
-Mogbazar,40
-Monipur,1
-Mohakhali,64
-Mohonpur,1
-Mohammadpur,68
-Motijeel,2
-Mugda,62
-Nawabpur,1
-Nazirabazar,9
-Nawabganj,4
-Narinda,13
-Nilkhet,3
-Nakhalpara,11
-Nayabazar,8
-Neemtoli,5
-Nikunja,1
-Pallabi,5
-Paltan,29
-Pirerbagh,3
-Postogola,6
-Purana Paltan,27
-Rajarbagh,138
-Rampura,22
-Ramna,12
-Rayerbagh,2
-Raja Bazar,2
-Rosulpur,1
-Rupganj,1
-Rayerbazar,4
-Sabujbagh,7
-Sadarghat,3
-Sahjanpur,14
-Sayedabad,4
-Segunbagicha,4
-Science Lab,1
-Shah Ali Bagh,2
-Shahbag,50
-Shakharibazar,28
-Shantibagh,9
-Shampur,1
-Shantinagar,15
-Shaymoli,22
-Shewrapara,7
-Shekher Tek,1
-Showari Ghat,3
-Sipahibag,1
-Siddheshwari,4
-Sonir akhra,12
-Swamibagh,31
-"Sher-E-BanglaNagar",6
-Sutrapur,18
-TatiBazar,6
-Tikatoli,16
-Tejkunipara,3
-Tejgaon,50
-Turag,1
-Tezturi Bazar,4
-Tongi,10
-Tolarbag,19
-Urdu Road,1
-Uttara,59
-Vatara,2
-Wari,41
+Chawk Bazar,81,Jatrabari,340,Mirpur,300,,
+,,Dania,,Jinjira,,Mirpur-1,
+Abdullahpur,22,,20,,1,,84
+,,Dakshinkhan,13,Jigatala,,Mirpur-2,
+Aftabnagar,,,,,,,
+,,,,,18,,21
+,9,,,,,,
+,,Dhakkeshori,,Jurain,,Mirpur-6,
+Adabor,,,,,,,
+,,,1,,56,,16
+,63,,,,,,
+Agargaon,90,Demra,41,Kafrul,24,Mirpur 7,6
+,,Dhanmondi,,Kallyanpur,,Mirpur-10,
+Ahmed Nagar,2,,196,,40,,27
+Ahmedabag,7,Dhalpur,21,Kalabagan,46,Mirpur-11,55
+,,Dholaipar,,Kakrail,,,
+Aminbazar,2,,7,,299,Mirpur-12,74
+,,Dholaikhal,,Kathalbagan,,Mirpur-13,
+Amlapara,,,,,,,
+,,,2,,29,,16
+,2,,,,,,
+,,Doyaganj,3,Kamalapur,28,Mirpur-14,
+Airport,,,,,,,
+,,,,,,,46
+,7,,,,,,
+Arambagh,9,Elephant Road,25,Kanchpur,3,Mitford,47
+,,English Road,,kajla,,Mogbazar,
+Armanitola,6,,2,,3,,219
+Asad Gate,1,Eskaton,58,Kamrangir Char,54,Monipur,6
+,,Farasganj,,,,,
+Ashulia,4,,2,Katashpur,2,Mohakhali,408
+,,Faridabagh,,Kazi para,,Mohonpur,
+Ashkona,,,,,,,
+,,,5,,20,,8
+,2,,,,,,
+,,Fakirapool,8,Kawran Bazar,23,Mohammadpur,
+Azimpur,,,,,,,
+,,,,,,,313
+,70,,,,,,
+,,Fulbaria,,Koratitola,,Motijeel,
+Babu Bazar,161,,18,,1,,36
+Bahadur Bazar,1,Forashganj,2,Konapara,5,Mouchak,2
+Badda,152,Farmgate,51,Kosaituli,1,Mugda,327
+Baily Road,22,Gendaria,115,Kochukhet,7,Nawabpur,6
+,,Gausia,12,Khilgaon,,Nazirabazar,
+Bakshibazar,,,,,,,
+,,,,,166,,10
+,9,,,,,,
+,,Gabtoli,,Khilkhet,,,
+Badam Toli,,,,,,,
+,,,5,,10,Nandi Para,12
+,2,,,,,,
+,,Golartek,,Koltabazar,,Nayapaltan,
+Baridhara,34,,1,,1,,2
+Banasree,37,Goran,22,Kodomtoli,22,Narinda,42
+Banani,80,Golapbagh,14,Kotowali,29,New market,14
+Bangla bazar,1,Gonoktuli,5,Kutubkhali,7,Niketon,9
+,,Gopibag,,,,,
+Banglamotor,,,,,,,
+,,,37,Kuril,8,Nilkhet,4
+,9,,,,,,
+,,Gulbag,1,Lalmatia,44,Nakhalpara,38
+Bangshal,102,,,,,,
+,,Gudaraghat,1,Lalbagh,177,Nayabazar,57
+Baganbari,2,,,,,,
+,,Green Road,50,Laxmibazar,22,Neemtoli,10
+Banianagar,1,,,,,,
+,,Gulistan,,,,,
+Basabo,100,,11,Madartek,9,Nikunja,5
+Bijoynagar,2,Gulshan,116,Malitola,4,Panthapath,30
+,,Hatir jhil,6,Malibagh,,,
+Bashundhora,,,,,,,
+,,,,,140,Pallabi,27
+,57,,,,,,
+,,Hajipara,,Matikata,,Paikpara,
+Begunbari,,,,,,,
+,,,7,,5,,18
+,4,,,,,,
+,,Hatkhula,,Manda,,Paltan,
+Begum Bazar,2,,1,,47,,53
+Beribadh,1,Hatirpool,34,Maniknagar,47,Pirerbagh,10
+Bokshi Bazar,5,Hazaribagh,92,Manikdi,1,Postogola,10
+Bosila,5,Ibrahimpur,11,Matuail,14,Poribagh,4
+,,Indira Road,6,Merul,,Purana Paltan,
+Buet Area,,,,,,,
+,,,,,1,,27
+,1,,,,,,
+,,Islambagh,,Meradia,,Rajarbagh,
+Cantonment,,,,,,,
+,,,10,,10,,214
+,26,,,,,,
+Central Road,4,Islampur,8,Mintu Road,5,Rampura,117
+,,Jailgate,,,,,
+Chankharpool,48,,2,Mirhajaribagh,8,Ramna,68
+Rayerbagh,19,,,,,,
+Raja Bazar,34,,,,,,
+Rosulpur,7,,,,,,
+Rupnagar,6,,,,,,
+Rupganj,2,,,,,,
+Rayerbazar,26,,,,,,
+Sabujbagh,30,,,,,,
+Sadarghat,5,,,,,,
+Sahjanpur,42,,,,,,
+Sahjadpur,5,,,,,,
+Sankar,3,,,,,,
+Sayedabad,16,,,,,,
+Segunbagicha,28,,,,,,
+Science Lab,1,,,,,,
+Shah Ali Bagh,2,,,,,,
+Shahbag,88,,,,,,
+Shakharibazar,32,,,,,,
+Shankar,1,,,,,,
+Shantibagh,36,,,,,,
+Shampur,17,,,,,,
+Shantinagar,61,,,,,,
+Shaymoli,87,,,,,,
+Shewrapara,11,,,,,,
+Shekher Tek,5,,,,,,
+Showari Ghat,3,,,,,,
+Sipahibag,4,,,,,,
+Siddheshwari,18,,,,,,
+Sonir akhra,22,,,,,,
+Swamibagh,58,,,,,,
+"Sher-E-BanglaNagar",81,,,,,,
+Sutrapur,49,,,,,,
+Tallabagh,4,,,,,,
+Taltola,10,,,,,,
+TatiBazar,18,,,,,,
+Tikatoli,33,,,,,,
+Tejgaon,205,,,,,,
+Turag,4,,,,,,
+Tezturi Bazar,5,,,,,,
+Tongi,24,,,,,,
+Tolarbag,19,,,,,,
+Urdu Road,1,,,,,,
+Uttara,283,,,,,,
+Vatara,30,,,,,,
+Vasantek,5,,,,,,
+Wari,103,,,,,,
