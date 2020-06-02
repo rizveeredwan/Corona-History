@@ -2,13 +2,15 @@ import requests
 r = requests.get('http://covid19tracker.gov.bd/api/dhaka')
 obj = r.json()
 dhaka_dict={}
+list=[]
 for i in obj:
-    print(i)
+    print(i,i['name'])
     dhaka_dict[i['name']]={}
     dhaka_dict[i['name']]['bangla']=i['bnName']
     dhaka_dict[i['name']]['confirmed']=int(i['confirmed'])
     dhaka_dict[i['name']]['old-confirmed']=[]
     dhaka_dict[i['name']]['flag']=0
+    list.append(i['name'])
 
 dates=[]
 change = False
@@ -24,14 +26,14 @@ with open('DhakaInfo.csv','r') as file:
             l = lines[i].strip().split(',')
             area = l[0]
             current_value = int(l[len(l)-1])
-            if(area in dhaka_dict):
+            if(area in list):
                 if(dhaka_dict[area]['confirmed']>current_value):
                     change=True
-                    dhaka_dict[i['name']]['flag']=1
+                    dhaka_dict[area]['flag']=1
                     for j in range(2,len(l)):
                         dhaka_dict[area]['old-confirmed'].append(l[j])
-                else:
-                    print(area ," not found")
+            else:
+                print(area ," not found")
 
 if(change==True):
     d=input('Give date: ')
