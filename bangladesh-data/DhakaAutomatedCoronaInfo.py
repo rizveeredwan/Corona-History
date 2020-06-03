@@ -17,7 +17,7 @@ for i in obj:
     dhaka_dict[i['name'].strip()]['confirmed']=int(i['confirmed'])
     dhaka_dict[i['name'].strip()]['old-confirmed']=[]
     dhaka_dict[i['name'].strip()]['flag']=0
-    list.append(i['name'])
+    list.append(i['name'].strip())
 
 dates=[]
 change = False
