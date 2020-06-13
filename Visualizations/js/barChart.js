@@ -47,7 +47,6 @@ function createBarChart(id,key_list,data_list,x_label, y_label,x_axis_categories
         }
       });
 
-
     /*var chart = c3.generate({
       bindto: '#'_id,
       data: {
